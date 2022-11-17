@@ -1,0 +1,6 @@
+## Interface: 100002
+## Title: MonkeyLibrary v10.0.2
+## Notes: Common files and functions for MonkeyMods. (http://www.toctastic.net/)
+## Notes-deDE: Gemeinsame Dateien und Funktionen fuer MonkeyMods. (http://www.toctastic.net/)
+## Author: Trentin (trentin@toctastic.net)
+MonkeyLibrary.xml
