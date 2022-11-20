@@ -395,7 +395,7 @@ end
 function MonkeyQuestInit_ApplySettings()
 
 	-- init the look
-	MonkeyQuestInit_Font(MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_iFont);
+	MonkeyQuestInit_Font(MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bCrashFont);
 	MonkeyQuestInit_Border(MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bCrashBorder);
 	
 	-- show or hide the main frame

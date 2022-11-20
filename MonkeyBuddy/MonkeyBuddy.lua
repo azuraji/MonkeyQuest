@@ -113,8 +113,7 @@ MonkeyBuddyQuest_CheckButtons[MONKEYBUDDY_QUEST_HIDETITLE] = {
 MonkeyBuddyQuest_CheckButtons[MONKEYBUDDY_QUEST_CRASHFONT] = {
     id = 16, 
     strVar = "m_bCrashFont",
-    pSlashCommand = MonkeyQuestInit_Font,
-	disabled = true
+    pSlashCommand = MonkeyQuestInit_Font
 };
 MonkeyBuddyQuest_CheckButtons[MONKEYBUDDY_QUEST_CRASHBORDER] = {
     id = 17, 
