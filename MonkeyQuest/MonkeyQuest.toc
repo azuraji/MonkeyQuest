@@ -1,5 +1,5 @@
 ## Interface: 100002
-## Title: MonkeyQuest v10.0.2.1
+## Title: MonkeyQuest v10.0.2.2
 ## Notes: Displays your quests for quick viewing. (http://www.toctastic.net/)
 ## Notes-deDE: Stellt Quests in einer kompakten Uebersicht dar. (http://www.toctastic.net/)
 ## Author: Trentin, Jim-Bim, azuraji

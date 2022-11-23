@@ -1516,7 +1516,7 @@ function MonkeyQuestButton_OnEnter(self, motion)
 	end
 
 	-- put the tooltip in the specified position
-	GameTooltip:SetPoint("TOPRIGHT", self, "TOPRIGHT", -275, -1);
+	GameTooltip:SetPoint("TOPLEFT", self, "BOTTOMLEFT", 3, 3);
 	
 	GameTooltip:Show();
 end
