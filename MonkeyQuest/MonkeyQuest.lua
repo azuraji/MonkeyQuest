@@ -60,10 +60,6 @@ function MonkeyQuest_OnLoad(self)
     MonkeyQuestSlash_Init();
     MonkeyQuestOptions();
 
-    -- overriding of tooltip functions
-	MonkeyQuest_OLD_aftt_setName = aftt_setName;
-	aftt_setName = MonkeyQuest_NEW_aftt_setName;
-    
     -- this will catch mobs needed for quests
 	self:RegisterEvent('UPDATE_MOUSEOVER_UNIT');
 end
@@ -525,14 +521,30 @@ function MonkeyQuest_Refresh(MBDaily)
 	local tmpQuestLogSelection = C_QuestLog.GetSelectedQuest();
 
 	local iNumEntries, iNumQuests = C_QuestLog.GetNumQuestLogEntries();
+
+	local visibleQuestsEffectiveCount = 0
+
+	for i = 1, iNumEntries, 1 do
+		local questInfo = C_QuestLog.GetInfo(i)
+		
+		if (questInfo.isHeader == false) then
+			if (MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bHideHiddenQuests == false or questInfo.isHidden == false) then
+				visibleQuestsEffectiveCount = visibleQuestsEffectiveCount + 1
+			end
+		end
+	end
+
+	iNumQuests = visibleQuestsEffectiveCount
 	
-	local DQCompleted = GetDailyQuestsCompleted();
+	-- local DQCompleted = GetDailyQuestsCompleted();
 	--local DQMax = GetMaxDailyQuests();
 
 	MonkeyQuestTitleText:SetTextHeight(MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_iFontHeight + 2);
 	-- set the title, with or without the number of quests
 
 		if (MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bShowNumQuests == true) then
+
+
 			if (MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bHideTitle == false) then
 				if (MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bShowDailyNumQuests == false) then
 					MonkeyQuestTitleText:SetText(MONKEYQUEST_TITLE .. " " .. iNumQuests .. "/" .. MAX_QUESTLOG_QUESTS);
@@ -560,12 +572,6 @@ function MonkeyQuest_Refresh(MBDaily)
 			end
 		end
 
-	
-	-- update the BIB text
-	if (BIB_MonkeyQuestButton_GetButtonText) then
-		BIB_MonkeyQuestButton_GetButtonText();
-	end
-
 
 	MonkeyQuest.m_iNumEntries = iNumEntries;
 
@@ -582,17 +588,42 @@ function MonkeyQuest_Refresh(MBDaily)
 
 	MonkeyQuest_RefreshQuestItemList();
 	
-	--local watchItemIndex = 0;
-
 	if (MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bMinimized == false) then
+		local questInfo, title
+		local visibleQuestsCount
+		local questHeaders = {}
 
+		for i = 1, iNumEntries, 1 do
+			questInfo = C_QuestLog.GetInfo(i)
+			
+			if (questInfo.isHeader) then
+				if (visibleQuestsCount and visibleQuestsCount > 0) then
+					questHeaders[title] = visibleQuestsCount
+				end
+				
+				title = questInfo.title
+				visibleQuestsCount = 0
+			else
+				if (questInfo.isHidden == false) then
+					visibleQuestsCount = visibleQuestsCount + 1
+				end
+			end
+		end
+
+		-- last header group
+
+		if (visibleQuestsCount and visibleQuestsCount > 0) then
+			questHeaders[title] = visibleQuestsCount
+		end
+
+		
 		for i = 1, iNumEntries, 1 do
 			-- questInfo.title			the title text of the quest, may be a header (ex. Wetlands)
 			-- questInfo.level			the level of the quest
 			-- questTagInfo.tagName		the tag on the quest (ex. COMPLETED)
 			--local strQuestLogTitleText, strQuestLevel, strQuestTag, suggestedGroup, isHeader, isCollapsed, isComplete, isDaily = C_QuestLog.GetTitleForLogIndex(i);
 
-			local questInfo = C_QuestLog.GetInfo(i)
+			questInfo = C_QuestLog.GetInfo(i)
 			--print(questInfo.title, questInfo.isHeader, questInfo.questID)
 			local suggestedGroup = questInfo.suggestedGroup
 			local isComplete = C_QuestLog.IsComplete(questInfo.questID)
@@ -614,88 +645,85 @@ function MonkeyQuest_Refresh(MBDaily)
 					MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_aQuestList[questInfo.title] = {};
 					MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_aQuestList[questInfo.title].m_bChecked = true;
 				end
-					
+
 				if (questInfo.isHeader) then
-					
-					if (MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_aQuestList[questInfo.title].m_bChecked == true) then
-						if (MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bNoHeaders == false or
-							MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bShowHidden == true or
-							MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bAlwaysHeaders == true) then
+					if (MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bHideHiddenQuests == false or questHeaders[questInfo.title]) then
+						if (MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_aQuestList[questInfo.title].m_bChecked == true) then
+							if (MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bNoHeaders == false or
+								MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bShowHidden == true or
+								MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bAlwaysHeaders == true) then
 
-							strMonkeyQuestBody = strMonkeyQuestBody .. 
-								format(MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_strHeaderOpenColour .. "%s|r",
-									"- " .. questInfo.title) .. "\n";
+								strMonkeyQuestBody = strMonkeyQuestBody .. format(MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_strHeaderOpenColour .. "%s|r", "- " .. questInfo.title) .. "\n";
 
-							_G["MonkeyQuestButton" .. iButtonId .. "Text"]:SetText(strMonkeyQuestBody);
-							_G["MonkeyQuestButton" .. iButtonId .. "Text"]:Show();
-							_G["MonkeyQuestButton" .. iButtonId]:Show();
+								_G["MonkeyQuestButton" .. iButtonId .. "Text"]:SetText(strMonkeyQuestBody);
+								_G["MonkeyQuestButton" .. iButtonId .. "Text"]:Show();
+								_G["MonkeyQuestButton" .. iButtonId]:Show();
 
-							-- set the bg colour
-							_G["MonkeyQuestButton" .. iButtonId .. "Texture"]:SetVertexColor(0.0, 0.0, 0.0, 0.0);
-			
-							_G["MonkeyQuestButton" .. iButtonId].m_iQuestIndex = i;
-							_G["MonkeyQuestButton" .. iButtonId].id = iButtonId;
-			
-							_G["MonkeyQuestHideButton" .. iButtonId]:Hide();
-							_G["MonkeyQuestHideButton" .. iButtonId].m_strQuestLogTitleText = questInfo.title;
-							
-							iButtonId = iButtonId + 1;
-			
-							strMonkeyQuestBody = "";
-						end
-					else
-						if (MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bShowHidden == true or
-							MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bAlwaysHeaders == true) then
-
-							strMonkeyQuestBody = strMonkeyQuestBody .. 
-								format(MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_strHeaderClosedColour .. "%s|r",
-									"+ " .. questInfo.title) .. "\n";
+								-- set the bg colour
+								_G["MonkeyQuestButton" .. iButtonId .. "Texture"]:SetVertexColor(0.0, 0.0, 0.0, 0.0);
+				
+								_G["MonkeyQuestButton" .. iButtonId].m_iQuestIndex = i;
+								_G["MonkeyQuestButton" .. iButtonId].id = iButtonId;
+				
+								_G["MonkeyQuestHideButton" .. iButtonId]:Hide();
+								_G["MonkeyQuestHideButton" .. iButtonId].m_strQuestLogTitleText = questInfo.title;
 								
-							_G["MonkeyQuestButton" .. iButtonId .. "Text"]:SetText(strMonkeyQuestBody);
-							_G["MonkeyQuestButton" .. iButtonId .. "Text"]:Show();
-							_G["MonkeyQuestButton" .. iButtonId]:Show();
+								iButtonId = iButtonId + 1;
+				
+								strMonkeyQuestBody = "";
+							end
+						else
+							if (MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bShowHidden == true or
+								MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bAlwaysHeaders == true) then
 
-							-- set the bg colour
-							_G["MonkeyQuestButton" .. iButtonId .. "Texture"]:SetVertexColor(0.0, 0.0, 0.0, 0.0);
-			
-							_G["MonkeyQuestButton" .. iButtonId].m_iQuestIndex = i;
-							_G["MonkeyQuestButton" .. iButtonId].id = iButtonId;
-							
-							_G["MonkeyQuestHideButton" .. iButtonId]:Hide();
-							_G["MonkeyQuestHideButton" .. iButtonId].m_strQuestLogTitleText = questInfo.title;
-			
-							iButtonId = iButtonId + 1;
-			
-							strMonkeyQuestBody = "";
+								strMonkeyQuestBody = strMonkeyQuestBody .. format(MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_strHeaderClosedColour .. "%s|r", "+ " .. questInfo.title) .. "\n";
+									
+								_G["MonkeyQuestButton" .. iButtonId .. "Text"]:SetText(strMonkeyQuestBody);
+								_G["MonkeyQuestButton" .. iButtonId .. "Text"]:Show();
+								_G["MonkeyQuestButton" .. iButtonId]:Show();
+
+								-- set the bg colour
+								_G["MonkeyQuestButton" .. iButtonId .. "Texture"]:SetVertexColor(0.0, 0.0, 0.0, 0.0);
+				
+								_G["MonkeyQuestButton" .. iButtonId].m_iQuestIndex = i;
+								_G["MonkeyQuestButton" .. iButtonId].id = iButtonId;
+								
+								_G["MonkeyQuestHideButton" .. iButtonId]:Hide();
+								_G["MonkeyQuestHideButton" .. iButtonId].m_strQuestLogTitleText = questInfo.title;
+				
+								iButtonId = iButtonId + 1;
+				
+								strMonkeyQuestBody = "";
+							end
+							-- keep looping through the list until we find the next header
+							bNextHeader = true;
 						end
-						-- keep looping through the list until we find the next header
-						bNextHeader = true;
 					end
 				else
 					-- check if the user even wants this displayed
-					if ((MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_aQuestList[questInfo.title].m_bChecked == true or 
-						MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bShowHidden) and 
-						(MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bHideCompletedQuests == false or
-						(MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bHideCompletedQuests == true and not isComplete) or
-						MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bShowHidden)) then
+					if ((MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_aQuestList[questInfo.title].m_bChecked == true or MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bShowHidden)
+						and (	   MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bHideCompletedQuests == false
+								 or (MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bHideCompletedQuests == true and not isComplete)
+								 or  MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bShowHidden)
+						and (MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bHideHiddenQuests == false or questInfo.isHidden == false)) then
 						
 						-- the user has this quest checked off or he's showing all quests anyways, so we show it (currently on :Hide)
 						--getglobal("MonkeyQuestHideButton" .. iButtonId):Hide();
 						
-						if ( MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bShowHidden ) then
-							_G["MonkeyQuestHideButton" .. iButtonId]:Hide();
-						else
-							_G["MonkeyQuestHideButton" .. iButtonId]:Hide();
-						end
+						-- if (MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bShowHidden) then
+						-- 	_G["MonkeyQuestHideButton" .. iButtonId]:Hide();
+						-- else
+						-- 	_G["MonkeyQuestHideButton" .. iButtonId]:Hide();
+						-- end
 						
-						-- update hide quests buttons
-						if (MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_aQuestList[questInfo.title].m_bChecked == true) then
-							_G["MonkeyQuestHideButton" .. iButtonId]:SetChecked(1);
-						else
-							_G["MonkeyQuestHideButton" .. iButtonId]:SetChecked(0);
-						end
+						-- -- update hide quests buttons
+						-- if (MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_aQuestList[questInfo.title].m_bChecked == true) then
+						-- 	_G["MonkeyQuestHideButton" .. iButtonId]:SetChecked(1);
+						-- else
+						-- 	_G["MonkeyQuestHideButton" .. iButtonId]:SetChecked(0);
+						-- end
 						
-						_G["MonkeyQuestHideButton" .. iButtonId].m_strQuestLogTitleText = questInfo.title;
+						-- _G["MonkeyQuestHideButton" .. iButtonId].m_strQuestLogTitleText = questInfo.title;
 						
 						local color = GetQuestDifficultyColor(questInfo.level);
 						local strQuestLink = GetQuestLink(questInfo.questID);
@@ -747,6 +775,14 @@ function MonkeyQuest_Refresh(MBDaily)
 							-- Emissary world quest
 							elseif (questTagInfo and questTagInfo.tagID == 128) then
 								strMonkeyQuestBody = strMonkeyQuestBody .. format("%s%s|r", strTitleColor, "[" .. questInfo.level .. "E] ");
+
+							-- Island quest
+							elseif (questTagInfo and questTagInfo.tagID == 254) then
+								strMonkeyQuestBody = strMonkeyQuestBody .. format("%s%s|r", strTitleColor, "[" .. questInfo.level .. "I] ");
+
+							-- Island weekly quest
+							elseif (questTagInfo and questTagInfo.tagID == 261) then
+								strMonkeyQuestBody = strMonkeyQuestBody .. format("%s%s|r", strTitleColor, "[" .. questInfo.level .. "Iw] ");
 								
 							elseif (questTagInfo and questTagInfo.tagID == Enum.QuestTag.PvP) then
 								if (questInfo.frequency == Enum.QuestFrequency.Daily) then
@@ -773,7 +809,7 @@ function MonkeyQuest_Refresh(MBDaily)
 
 							-- Covenant Calling Quest
 							elseif (questTagInfo and questTagInfo.tagID == 271) then
-								strMonkeyQuestBody = strMonkeyQuestBody .. format("%s%s|r", strTitleColor, "[" .. questInfo.level .. "CQ] ");
+								strMonkeyQuestBody = strMonkeyQuestBody .. format("%s%s|r", strTitleColor, "[" .. questInfo.level .. "C] ");
 
 							else
 								strMonkeyQuestBody = strMonkeyQuestBody .. format("%s%s|r", strTitleColor, "[" .. questInfo.level .. "] ");

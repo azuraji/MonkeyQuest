@@ -127,7 +127,7 @@
 
   <Frame name="MonkeyBuddyFrame" toplevel="true" frameStrata="MEDIUM" movable="true" enableMouse="true" hidden="true" parent="UIParent" inherits="BackdropTemplate">
     <Size>
-      <AbsDimension x="700" y="625"/>
+      <AbsDimension x="700" y="700"/>
     </Size>
     <Anchors>
       <Anchor point="CENTER"/>
@@ -353,6 +353,11 @@
               <Anchor point="TOPLEFT" relativeTo="MonkeyBuddyQuestCheck21" relativePoint="BOTTOMLEFT" />
             </Anchors>
           </CheckButton>
+          <CheckButton name="MonkeyBuddyQuestCheck23" inherits="MonkeyBuddyCheckButtonTemplate">
+            <Anchors>
+              <Anchor point="TOPLEFT" relativeTo="MonkeyBuddyQuestCheck22" relativePoint="BOTTOMLEFT" />
+            </Anchors>
+          </CheckButton>
 
           <Button name="MonkeyBuddyQuestColour1" inherits="MonkeyBuddyQuestColourButtonTemplate">
             <Anchors>
@@ -458,7 +463,7 @@
             <Anchors>
               <Anchor point="BOTTOM">
                 <Offset>
-                  <AbsDimension x="0" y="8" />
+                  <AbsDimension x="0" y="-70" />
                 </Offset>
               </Anchor>
             </Anchors>

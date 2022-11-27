@@ -1,5 +1,5 @@
 ## Interface: 100002
-## Title: MonkeyQuestLog v10.0.2.1
+## Title: MonkeyQuestLog v10.0.2.3
 ## Notes: Replacement Quest Log. (http://www.toctastic.net/)
 ## Notes-deDE: Ersetzt den Questlog. (http://www.toctastic.net/)
 ## Author: Trentin, Jim-Bim, azuraji

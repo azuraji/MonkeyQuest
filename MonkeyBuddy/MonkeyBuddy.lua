@@ -145,6 +145,11 @@ MonkeyBuddyQuest_CheckButtons[MONKEYBUDDY_QUEST_WORKCOMPLETE] = {
     strVar = "m_bWorkComplete",
     pSlashCommand = MonkeyQuestSlash_CmdWorkComplete
 };
+MonkeyBuddyQuest_CheckButtons[MONKEYBUDDY_QUEST_HIDEHIDDENQUESTS] = {
+    id = 23,
+    strVar = "m_bHideHiddenQuests",
+    pSlashCommand = MonkeyQuestSlash_CmdHideHiddenQuests
+};
 
 
 -- this array is used to init the colour buttons

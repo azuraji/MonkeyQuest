@@ -1,13 +1,3 @@
--- this function catches the aftooltip extreme function for setting the mouse over unit's name
-function MonkeyQuest_NEW_aftt_setName(unit)
-	--return false;
-
-    -- call the original aftt setName function
-    --MonkeyQuest_OLD_aftt_setName(unit);
-
-    -- Overwrite the aftt text with the quest objective completeness, if needed
-   -- MonkeyQuest_SearchTooltip();
-end
 
 -- this function catches the bag mouse over tooltip event
 function YourSetBagItem(self, bag, slot)
@@ -115,12 +105,6 @@ function MonkeyQuest_SearchQuestListItem(strSearch)
         if (i ~= nil and i ~= j and iStrSearchSize == iStrKeySize) then
             -- found it!
             --DEFAULT_CHAT_FRAME:AddMessage(key .. " == " .. strSearch .. " i= " .. i .. " j= " .. j);
-
-            if (aftt_textline1 ~= nil) then
-                -- aftootip is loaded, set the text for it
-                aftt_textline1:SetText(strSearch .. " " .. MONKEYQUEST_TOOLTIP_QUESTITEM .. " " .. value.m_iNumItems .. "/" .. value.m_iNumNeeded);
-                --DEFAULT_CHAT_FRAME:AddMessage("aftt hack");
-            end
 
             -- TODO: calculate the completeness colour
             local colourTip = {a = 1.0, r = 1.0, g = 1.0, b = 1.0};

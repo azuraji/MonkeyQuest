@@ -143,6 +143,11 @@ function MonkeyQuestInit_LoadConfig()
 		MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bCrashFont = MONKEYQUEST_DEFAULT_CRASHFONT;
 	end
 
+	-- Hide hidden quests
+	if (MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bHideHiddenQuests == nil) then
+		MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bHideHiddenQuests = MONKEYQUEST_DEFAULT_HIDEHIDDENQUESTS;
+	end
+
 	-- Golden border
 	if (MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bCrashBorder == nil) then
 		MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bCrashBorder = MONKEYQUEST_DEFAULT_CRASHBORDER;
@@ -173,12 +178,6 @@ function MonkeyQuestInit_LoadConfig()
 		MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bLockBIB = MONKEYQUEST_DEFAULT_LOCKBIB;
 	end
 	
-	-- force unlocked from bib if there is no bib
-	if (not IsAddOnLoaded("BhaldieInfoBar") and MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bLockBIB == true) then
-		MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bLockBIB = false;
-		MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_strAnchor = "ANCHOR_TOPLEFT";
-	end
-
 	-- All variables are loaded now
 	MonkeyQuest.m_bLoaded = true;
 	
@@ -215,8 +214,7 @@ function MonkeyQuestInit_CleanQuestList()
 			MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_aQuestList[strQuestLogTitleText].m_bChecked = true;
 		end
 			
-		MonkeyQuest.m_aQuestList[strQuestLogTitleText].m_bChecked = 
-			MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_aQuestList[strQuestLogTitleText].m_bChecked;
+		MonkeyQuest.m_aQuestList[strQuestLogTitleText].m_bChecked = MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_aQuestList[strQuestLogTitleText].m_bChecked;
 	end
 	
 	-- clean up the config hidden list
@@ -294,6 +292,7 @@ function MonkeyQuestInit_ResetConfig()
 	MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bShowTooltipObjectives = MONKEYQUEST_DEFAULT_SHOWTOOLTIPOBJECTIVES;
 	MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bHideTitleButtons = MONKEYQUEST_DEFAULT_HIDETITLEBUTTONS;
 	MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bHideTitle = MONKEYQUEST_DEFAULT_HIDETITLE;
+	MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bHideHiddenQuests = MONKEYQUEST_DEFAULT_HIDEHIDDENQUESTS;
 	MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bWorkComplete = MONKEYQUEST_DEFAULT_WORKCOMPLETE;
 	MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bColourTitle = MONKEYQUEST_DEFAULT_COLOURTITLE;
 
@@ -304,9 +303,6 @@ function MonkeyQuestInit_ResetConfig()
 	-- noob tips
 	MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bShowNoobTips = MONKEYQUEST_DEFAULT_SHOWNOOBTIPS;
 	
-	-- BhaldieInfoBar
-	MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bLockBIB = MONKEYQUEST_DEFAULT_LOCKBIB;
-
 	-- colours
 	MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_strQuestTitleColour = MONKEYQUEST_DEFAULT_QUESTTITLECOLOUR;
 	MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_strHeaderOpenColour = MONKEYQUEST_DEFAULT_HEADEROPENCOLOUR;

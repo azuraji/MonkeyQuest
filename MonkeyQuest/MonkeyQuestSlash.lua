@@ -660,6 +660,16 @@ function MonkeyQuestSlash_CmdWorkComplete(bWork)
 	end
 end
 
+function MonkeyQuestSlash_CmdHideHiddenQuests(bHide)
+	MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bHideHiddenQuests = bHide;
+	MonkeyQuest_Refresh();
+
+	-- check for MonkeyBuddy
+	if (MonkeyBuddyQuestFrame_Refresh ~= nil) then
+		MonkeyBuddyQuestFrame_Refresh();
+	end
+end
+
 function MonkeyQuestSlash_ToggleDisplay()
 	-- if not loaded yet then get out
 	if (MonkeyQuest.m_bLoaded == false) then
