@@ -21,8 +21,6 @@ MONKEYBUDDY_GUI_TEXT						="This addon allows you to easily configure your Monke
 MONKEYBUDDY_GUI_MBLOADED					= MONKEYBUDDY_GUI_ICON .. "MonkeyBuddy successfully loaded!"
 MONKEYBUDDY_GUI_MMINSTALLED					="Installed MonkeyMods:"
 MONKEYBUDDY_GUI_MBMINIMAP					="Show the MonkeyBuddy minimap icon"
-MONKEYBUDDY_GUI_MQEXTRA						="MonkeyQuest Extra:"
-MONKEYBUDDY_GUI_MQEDAILY					="Show the daily quest counter in the title"
 MONKEYBUDDY_GUI_MBOPENCFG					="Click on the following Button to open"
 
 -- defs for MonkeyQuest
@@ -40,12 +38,10 @@ MONKEYBUDDY_QUEST_HIDECOMPLETEDQUESTS		= "Hide completed quests";
 MONKEYBUDDY_QUEST_HIDECOMPLETEDOBJECTIVES	= "Hide completed objectives";
 MONKEYBUDDY_QUEST_SHOWTOOLTIPOBJECTIVES		= "Show objective completeness in tooltips";
 MONKEYBUDDY_QUEST_ALLOWRIGHTCLICK			= "Allow right click to open MonkeyBuddy";
-MONKEYBUDDY_QUEST_HIDETITLEBUTTONS			= "Hide the title buttons";
 MONKEYBUDDY_QUEST_HIDETITLE					= "Hide the title (" .. MONKEYBUDDY_QUEST_TITLE .. ") text";
 MONKEYBUDDY_QUEST_CRASHFONT					= "Use the skinny font";
 MONKEYBUDDY_QUEST_CRASHBORDER				= "Use the golden border colour";
 MONKEYBUDDY_QUEST_SHOWNOOBTIPS				= "Show helpful tooltips for Noobs";
-MONKEYBUDDY_QUEST_SHOWZONEHIGHLIGHT			= "Show quest zone highlighting";
 MONKEYBUDDY_QUEST_SHOWQUESTLEVEL			= "Show the quest levels";
 MONKEYBUDDY_QUEST_WORKCOMPLETE				= "Enable >work complete< sound";
 MONKEYBUDDY_QUEST_HIDEHIDDENQUESTS = "Hide quests hidden in Blizzard's quest log";
@@ -59,7 +55,6 @@ MONKEYBUDDY_QUEST_INITIALOBJECTIVECOLOUR	= "Objectives at 0%";
 MONKEYBUDDY_QUEST_MIDOBJECTIVECOLOUR		= "Objectives at 50%";
 MONKEYBUDDY_QUEST_COMPLETEOBJECTIVECOLOUR	= "Objectives at <100%";
 MONKEYBUDDY_QUEST_FINISHOBJECTIVECOLOUR		= "Finished Objectives";
-MONKEYBUDDY_QUEST_ZONEHIGHLIGHTCOLOUR		= "Current Zone Highlight";
 
 MONKEYBUDDY_QUEST_FRAMEALPHASLIDER			= "Global Alpha";
 MONKEYBUDDY_QUEST_ALPHASLIDER				= "Background Alpha";
@@ -108,8 +103,6 @@ MONKEYBUDDY_GUI_TEXT						="Dieses AddOn hilft euch beim Einstellen euer MonkeyM
 MONKEYBUDDY_GUI_MBLOADED					= MONKEYBUDDY_GUI_ICON .. "MonkeyBuddy erfolgreich geladen!"
 MONKEYBUDDY_GUI_MMINSTALLED					="Installierte MonkeyMods:"
 MONKEYBUDDY_GUI_MBMINIMAP					="Zeige das MonkeyBuddy MiniMap Symbol"
-MONKEYBUDDY_GUI_MQEXTRA						="MonkeyQuest Extra:"
-MONKEYBUDDY_GUI_MQEDAILY					="Zeige die Anzahl der t\195\164glichen Quests im Titel"
 MONKEYBUDDY_GUI_MBOPENCFG					="Ein Klick auf folgenden Button \195\182ffnet"
 
 -- defs for MonkeyQuest
@@ -127,7 +120,6 @@ MONKEYBUDDY_QUEST_HIDECOMPLETEDQUESTS		= "Verberge erf\195\188llte Quests";
 MONKEYBUDDY_QUEST_HIDECOMPLETEDOBJECTIVES	= "Verberge erf\195\188llte Ziele";
 MONKEYBUDDY_QUEST_SHOWTOOLTIPOBJECTIVES		= "Zeige Zielfortschritte in Tooltips";
 MONKEYBUDDY_QUEST_ALLOWRIGHTCLICK			= "\195\150ffnen von MonkeyBuddy durch Rechtsklick erm\195\182glichen";
-MONKEYBUDDY_QUEST_HIDETITLEBUTTONS			= "Verberge die Titel-Buttons";
 MONKEYBUDDY_QUEST_HIDETITLE					= "Verberge den Text (" .. MONKEYBUDDY_QUEST_TITLE .. ") im Titel";
 MONKEYBUDDY_QUEST_CRASHFONT					= "Verwende eine d\195\188nne Schriftart";
 MONKEYBUDDY_QUEST_CRASHBORDER				= "Benutze die goldene Rahmen-Farbe";
@@ -196,8 +188,6 @@ MONKEYBUDDY_RESET							= "R.\195\160.Z.";
 --MONKEYBUDDY_GUI_MBLOADED					= MONKEYBUDDY_GUI_ICON .. "MonkeyBuddy successfully loaded!"
 --MONKEYBUDDY_GUI_MMINSTALLED					="Installed MonkeyMods:"
 --MONKEYBUDDY_GUI_MBMINIMAP					="Show the MonkeyBuddy minimap icon"
---MONKEYBUDDY_GUI_MQEXTRA						="MonkeyQuest Extra:"
---MONKEYBUDDY_GUI_MQEDAILY					="Show the daily quest counter in the title"
 --MONKEYBUDDY_GUI_MBOPENCFG					="Click on the following Button to open"
 
 -- defs for MonkeyQuest
@@ -215,7 +205,6 @@ MONKEYBUDDY_QUEST_HIDECOMPLETEDQUESTS		= "Cacher les qu\195\170tes termin\195\16
 MONKEYBUDDY_QUEST_HIDECOMPLETEDOBJECTIVES	= "Cacher les objectifs termin\195\169s";
 MONKEYBUDDY_QUEST_SHOWTOOLTIPOBJECTIVES		= "Afficher les objectifs dans la bulle d\'aide";
 MONKEYBUDDY_QUEST_ALLOWRIGHTCLICK			= "Clic droit pour ouvrir MonkeyBuddy";
-MONKEYBUDDY_QUEST_HIDETITLEBUTTONS			= "Cacher les boutons de titre";
 MONKEYBUDDY_QUEST_HIDETITLE					= "Cacher le texte (" .. MONKEYBUDDY_QUEST_TITLE .. ") dans le titre";
 MONKEYBUDDY_QUEST_CRASHFONT					= "Utiliser la police de Crash";
 MONKEYBUDDY_QUEST_CRASHBORDER				= "Utiliser la couleur de bordure de Crash";

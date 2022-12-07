@@ -178,14 +178,6 @@ function MonkeyQuestSlash_Parse(msg)
 		MonkeyQuestSlash_CmdAllowRightClick(false);
 		return;
 	end
-	if (string.lower(msg) == "hidetitlebuttons") then
-		MonkeyQuestSlash_CmdHideTitleButtons(true);
-		return;
-	end
-	if (string.lower(msg) == "showtitlebuttons") then
-		MonkeyQuestSlash_CmdHideTitleButtons(false);
-		return;
-	end
 	if (string.lower(msg) == "hidetitle") then
 		MonkeyQuestSlash_CmdHideTitle(true);
 		return;
@@ -342,14 +334,6 @@ function MonkeyQuestSlash_CmdHelp(strCommand)
 	end
 	if (strCommand == "disallowrightclick") then
 		DEFAULT_CHAT_FRAME:AddMessage(MONKEYQUEST_HELP_DISALLOWRIGHTCLICK_MSG);
-		return;
-	end
-	if (strCommand == "hidetitlebuttons") then
-		DEFAULT_CHAT_FRAME:AddMessage(MONKEYQUEST_HELP_HIDETITLEBUTTONS_MSG);
-		return;
-	end
-	if (strCommand == "showtitlebuttons") then
-		DEFAULT_CHAT_FRAME:AddMessage(MONKEYQUEST_HELP_SHOWTITLEBUTTONS_MSG);
 		return;
 	end
 	if (strCommand == "allowworkcomplete") then
@@ -620,26 +604,6 @@ function MonkeyQuestSlash_CmdAllowRightClick(bAllow)
 	end
 end
 
-function MonkeyQuestSlash_CmdHideTitleButtons(bHide)
-	MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bHideTitleButtons = bHide;
-	
-	if (bHide == true) then
-		MonkeyQuestCloseButton:Hide();
-		MonkeyQuestMinimizeButton:Hide();
-		MonkeyQuestShowHiddenCheckButton:Hide();
-	else
-		MonkeyQuestCloseButton:Show();
-		MonkeyQuestMinimizeButton:Show();
-		MonkeyQuestShowHiddenCheckButton:Show();
-	end
-	
-	-- check for MonkeyBuddy
-	
-	if (MonkeyBuddyQuestFrame_Refresh ~= nil) then
-		MonkeyBuddyQuestFrame_Refresh();
-	end
-end
-
 function MonkeyQuestSlash_CmdHideTitle(bHide)
 	MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bHideTitle = bHide;
 	MonkeyQuest_Refresh();
@@ -880,17 +844,6 @@ function MonkeyQuestSlash_CmdSetQuestPadding(iPadding)
 
 	-- resize MonkeyQuest
 	MonkeyQuest_Resize();
-
-	-- check for MonkeyBuddy
-	if (MonkeyBuddyQuestFrame_Refresh ~= nil) then
-		MonkeyBuddyQuestFrame_Refresh();
-	end
-end
-
-function MonkeyQuestSlash_CmdShowZoneHighlight(bShowZoneHighlight)
-	MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bShowZoneHighlight = bShowZoneHighlight;
-
-	MonkeyQuest_Refresh();
 
 	-- check for MonkeyBuddy
 	if (MonkeyBuddyQuestFrame_Refresh ~= nil) then

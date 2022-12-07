@@ -109,12 +109,6 @@ Allows right-click to open MonkeyBuddy.
 /mquest disallowrightclick
 Disallows right-click from opening MonkeyBuddy.
 
-/mquest hidetitlebuttons
-Hides the title buttons.
-
-/mquest showtitlebuttons
-Shows the title buttons.
-
 /mquest hidetitle
 Hides the title "MonkeyQuest" text.
 

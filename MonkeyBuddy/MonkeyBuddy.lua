@@ -100,53 +100,43 @@ MonkeyBuddyQuest_CheckButtons[MONKEYBUDDY_QUEST_ALLOWRIGHTCLICK] = {
     strVar = "m_bAllowRightClick",
     pSlashCommand = MonkeyQuestSlash_CmdAllowRightClick
 };
-MonkeyBuddyQuest_CheckButtons[MONKEYBUDDY_QUEST_HIDETITLEBUTTONS] = {
-    id = 14, 
-    strVar = "m_bHideTitleButtons",
-    pSlashCommand = MonkeyQuestSlash_CmdHideTitleButtons
-};
 MonkeyBuddyQuest_CheckButtons[MONKEYBUDDY_QUEST_HIDETITLE] = {
-    id = 15, 
+    id = 14, 
     strVar = "m_bHideTitle",
     pSlashCommand = MonkeyQuestSlash_CmdHideTitle
 };
 MonkeyBuddyQuest_CheckButtons[MONKEYBUDDY_QUEST_CRASHFONT] = {
-    id = 16, 
+    id = 15, 
     strVar = "m_bCrashFont",
     pSlashCommand = MonkeyQuestInit_Font
 };
 MonkeyBuddyQuest_CheckButtons[MONKEYBUDDY_QUEST_CRASHBORDER] = {
-    id = 17, 
+    id = 16, 
     strVar = "m_bCrashBorder",
     pSlashCommand = MonkeyQuestInit_Border
 };
 MonkeyBuddyQuest_CheckButtons[MONKEYBUDDY_QUEST_SHOWNOOBTIPS] = {
-    id = 18,
+    id = 17,
     strVar = "m_bShowNoobTips",
     pSlashCommand = MonkeyQuestSlash_CmdShowNoobTips
 };
-MonkeyBuddyQuest_CheckButtons[MONKEYBUDDY_QUEST_SHOWZONEHIGHLIGHT] = {
-    id = 19,
-    strVar = "m_bShowZoneHighlight",
-    pSlashCommand = MonkeyQuestSlash_CmdShowZoneHighlight
-};
 MonkeyBuddyQuest_CheckButtons[MONKEYBUDDY_QUEST_SHOWQUESTLEVEL] = {
-    id = 20,
+    id = 18,
     strVar = "m_bShowQuestLevel",
     pSlashCommand = MonkeyQuestSlash_CmdShowQuestLevel
 };
 MonkeyBuddyQuest_CheckButtons[MONKEYBUDDY_QUEST_ALWAYSHEADERS] = {
-    id = 21,
+    id = 19,
     strVar = "m_bAlwaysHeaders",
     pSlashCommand = MonkeyQuestSlash_CmdAlwaysHeaders
 };
 MonkeyBuddyQuest_CheckButtons[MONKEYBUDDY_QUEST_WORKCOMPLETE] = {
-    id = 22,
+    id = 20,
     strVar = "m_bWorkComplete",
     pSlashCommand = MonkeyQuestSlash_CmdWorkComplete
 };
 MonkeyBuddyQuest_CheckButtons[MONKEYBUDDY_QUEST_HIDEHIDDENQUESTS] = {
-    id = 23,
+    id = 21,
     strVar = "m_bHideHiddenQuests",
     pSlashCommand = MonkeyQuestSlash_CmdHideHiddenQuests
 };
@@ -189,10 +179,6 @@ MonkeyBuddyQuest_ColourButtons[MONKEYBUDDY_QUEST_COMPLETEOBJECTIVECOLOUR] = {
 MonkeyBuddyQuest_ColourButtons[MONKEYBUDDY_QUEST_FINISHOBJECTIVECOLOUR] = {
     id = 9,
     strVar = "m_strFinishObjectiveColour"
-};
-MonkeyBuddyQuest_ColourButtons[MONKEYBUDDY_QUEST_ZONEHIGHLIGHTCOLOUR] = {
-    id = 10,
-    strVar = "m_strZoneHighlightColour"
 };
 
 
@@ -318,9 +304,8 @@ function MonkeyBuddy_OnEvent(self, event, ...)
 	end
 	if (MonkeyBuddyConfig[MonkeyBuddy.m_strPlayer] == nil) then
 	    MonkeyBuddyConfig[MonkeyBuddy.m_strPlayer] = {};
-            MonkeyBuddyConfig[MonkeyBuddy.m_strPlayer].m_bDismissed = false;
-            MonkeyBuddyConfig[MonkeyBuddy.m_strPlayer].m_bDailies = false;
-        end
+        MonkeyBuddyConfig[MonkeyBuddy.m_strPlayer].m_bDismissed = false;
+    end
         
         -- print out a nice message letting the user know the addon loaded
         -- if (DEFAULT_CHAT_FRAME) then
@@ -473,18 +458,6 @@ function MonkeyBuddyOptionsCheckButton_OnClick(self, button, down)
 		MonkeyBuddyConfig[MonkeyBuddy.m_strPlayer].m_bDismissed = false;
     else
 		MonkeyBuddyConfig[MonkeyBuddy.m_strPlayer].m_bDismissed = true;
-    end
-end
-
-function MonkeyQuestDailiesCheckButton_OnClick(self, button, down)
-    if (self:GetChecked()) then
-		local enable = 1;
-		MonkeyBuddyConfig[MonkeyBuddy.m_strPlayer].m_bDailies = true
-		MonkeyQuest_Refresh(enable)
-    else
-		local disable = 0;
-		MonkeyBuddyConfig[MonkeyBuddy.m_strPlayer].m_bDailies = false
-		MonkeyQuest_Refresh(disable)
     end
 end
 
@@ -713,7 +686,7 @@ function MonkeyBuddyOptions()
     MonkeyBuddyOptionsText7:SetPoint("TOPLEFT", MonkeyBuddyOptionsText6, "BOTTOMLEFT", 0, -14)
     MonkeyBuddyOptionsText7:SetWidth(340)
 
-    local MonkeyBuddyOptionsTextB= MonkeyBuddyOptions:CreateFontString(nil, "ARTWORK")
+    local MonkeyBuddyOptionsTextB = MonkeyBuddyOptions:CreateFontString(nil, "ARTWORK")
     MonkeyBuddyOptionsTextB:SetFontObject(GameFontNormalLarge)
     MonkeyBuddyOptionsTextB:SetJustifyH("LEFT") 
     MonkeyBuddyOptionsTextB:SetJustifyV("TOP")
@@ -751,7 +724,7 @@ function MonkeyBuddyOptions()
         MonkeyBuddyOptionsCheckButton:SetChecked(false)
     end
 
-    local MonkeyBuddyOptionsTextCheck= MonkeyBuddyOptions:CreateFontString(nil, "ARTWORK")
+    local MonkeyBuddyOptionsTextCheck = MonkeyBuddyOptions:CreateFontString(nil, "ARTWORK")
     MonkeyBuddyOptionsTextCheck:SetFontObject(GameFontNormal)
     MonkeyBuddyOptionsTextCheck:SetJustifyH("LEFT") 
     MonkeyBuddyOptionsTextCheck:SetJustifyV("TOP")
@@ -761,64 +734,13 @@ function MonkeyBuddyOptions()
     MonkeyBuddyOptionsTextCheck:SetWidth(340)
     MonkeyBuddyOptionsTextCheck:SetText(MONKEYBUDDY_GUI_MBMINIMAP)
 
-    if (IsAddOnLoaded("MonkeyQuest") ~= nil) then
-        local MonkeyBuddyOptionsTextM = MonkeyBuddyOptions:CreateFontString(nil, "ARTWORK")
-        MonkeyBuddyOptionsTextM:SetFontObject(GameFontNormalLarge)
-        MonkeyBuddyOptionsTextM:SetJustifyH("LEFT") 
-        MonkeyBuddyOptionsTextM:SetJustifyV("TOP")
-        MonkeyBuddyOptionsTextM:ClearAllPoints()
-        MonkeyBuddyOptionsTextM:SetPoint("TOPLEFT", MonkeyBuddyOptionsTextB, "BOTTOMLEFT", 0, -42)
-        MonkeyBuddyOptionsTextM:SetWidth(340)
-        MonkeyBuddyOptionsTextM:SetText(MONKEYBUDDY_GUI_MQEXTRA)
-
-
-        local MonkeyQuestDailies = CreateFrame("FRAME", "MQDailiesOption", MonkeyBuddyOptions, BackdropTemplateMixin and "BackdropTemplate")
-
-        MonkeyQuestDailies:SetBackdrop({
-            bgFile = "Interface\\Tooltips\\UI-Tooltip-Background", 
-            edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border", 
-            tile = true,
-            tileSize = 16,
-            edgeSize = 16, 
-            insets = { left = 4, right = 4, top = 4, bottom = 4 }
-        })
-        MonkeyQuestDailies:SetBackdropBorderColor(1, 1, 1, 1.0)
-        MonkeyQuestDailies:SetBackdropColor(0, 0, 0, 0)
-
-        MonkeyQuestDailies:SetWidth(345)
-        MonkeyQuestDailies:SetHeight(35)
-        MonkeyQuestDailies:ClearAllPoints()
-        MonkeyQuestDailies:SetPoint("TOPLEFT", MonkeyBuddyOptionsTextM, "BOTTOMLEFT", -6, -4)
-
-        MonkeyQuestDailiesCheckButton = CreateFrame("CheckButton", "MQDailiesCheckButton", MonkeyBuddyOptions, "MonkeyQuestDailiesCheckButtonTemplate")
-        MonkeyQuestDailiesCheckButton:ClearAllPoints()
-        MonkeyQuestDailiesCheckButton:SetPoint("TOPLEFT", MonkeyBuddyOptionsTextM, "BOTTOMLEFT", 2, -11)
-        
-        if (MonkeyBuddyConfig[MonkeyBuddy.m_strPlayer].m_bDailies == true) then
-            MonkeyQuestDailiesCheckButton:SetChecked(true)
-        else
-            MonkeyQuestDailiesCheckButton:SetChecked(false)
-        end
-
-        local MonkeyQuestDailiesTextCheck = MonkeyBuddyOptions:CreateFontString(nil, "ARTWORK")
-        MonkeyQuestDailiesTextCheck:SetFontObject(GameFontNormal)
-        MonkeyQuestDailiesTextCheck:SetJustifyH("LEFT") 
-        MonkeyQuestDailiesTextCheck:SetJustifyV("TOP")
-        MonkeyQuestDailiesTextCheck:SetTextColor(1, 1, 1)
-        MonkeyQuestDailiesTextCheck:ClearAllPoints()
-        MonkeyQuestDailiesTextCheck:SetPoint("TOPLEFT", MonkeyBuddyOptionsTextM, "BOTTOMLEFT", 24, -15)
-        MonkeyQuestDailiesTextCheck:SetWidth(340)
-        MonkeyQuestDailiesTextCheck:SetText(MONKEYBUDDY_GUI_MQEDAILY)
-
-    end
-
     local MonkeyBuddyOptionsTextMB = MonkeyBuddyOptions:CreateFontString(nil, "ARTWORK")
     MonkeyBuddyOptionsTextMB:SetFontObject(GameFontNormal)
     MonkeyBuddyOptionsTextMB:SetJustifyH("LEFT") 
     MonkeyBuddyOptionsTextMB:SetJustifyV("TOP")
     MonkeyBuddyOptionsTextMB:SetTextColor(1, 1, 1)
     MonkeyBuddyOptionsTextMB:ClearAllPoints()
-    MonkeyBuddyOptionsTextMB:SetPoint("TOPLEFT", MonkeyBuddyOptionsTextB, "BOTTOMLEFT", 5, -106)
+    MonkeyBuddyOptionsTextMB:SetPoint("TOPLEFT", MonkeyBuddyOptionsTextB, "BOTTOMLEFT", 5, -48)
     MonkeyBuddyOptionsTextMB:SetWidth(340)
     MonkeyBuddyOptionsTextMB:SetText(MONKEYBUDDY_GUI_MBOPENCFG)
 
@@ -830,7 +752,7 @@ function MonkeyBuddyOptions()
     MonkeyBuddyOptionsMBButton:SetText("MonkeyBuddy")
     MonkeyBuddyOptionsMBButton:RegisterForClicks("LeftButtonUp")
     MonkeyBuddyOptionsMBButton:ClearAllPoints()
-    MonkeyBuddyOptionsMBButton:SetPoint("TOPLEFT", MonkeyBuddyOptionsTextB, "BOTTOMLEFT", 225, -100)
+    MonkeyBuddyOptionsMBButton:SetPoint("TOPLEFT", MonkeyBuddyOptionsTextB, "BOTTOMLEFT", 225, -41)
     MonkeyBuddyOptionsMBButton:SetScript("OnClick", MBButton_OnClick)
     MonkeyBuddyOptionsMBButton:SetScript("OnMouseDown", MBButton_MouseDown)
     MonkeyBuddyOptionsMBButton:SetScript("OnMouseUp", MBButton_MouseUp)

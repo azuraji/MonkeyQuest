@@ -26,7 +26,7 @@ MONKEYQUEST_HELP_MSG					= MONKEYQUEST_INFO_COLOUR .. "Slash Command: /mquest he
 										  "growup, growdown, hidenumquests, shownumquests, lock, unlock, colourtitleon, " ..
 										  "colourtitleoff, hidecompletedquests, showcompletedquests, hidecompletedobjectives, " ..
 										  "showcompletedobjectives, fontheight, showtooltipobjectives, hidetootipobjectives, " ..
-										  "allowrightclick, disallowrightclick, hidetitlebuttons, showtitlebuttons, allowworkcomplete, disallowworkcomplete."
+										  "allowrightclick, disallowrightclick, allowworkcomplete, disallowworkcomplete."
 MONKEYQUEST_HELP_RESET_MSG				= MONKEYQUEST_INFO_COLOUR .. "Slash Command: /mquest reset\n" ..
 										  MONKEYQUEST_CHAT_COLOUR .. "Displays the reset config variables dialog.\n"
 MONKEYQUEST_HELP_OPEN_MSG				= MONKEYQUEST_INFO_COLOUR .. "Slash Command: /mquest open\n" ..
@@ -92,17 +92,12 @@ MONKEYQUEST_HELP_ALLOWRIGHTCLICK_MSG	= MONKEYQUEST_INFO_COLOUR .. "Slash Command
 										  MONKEYQUEST_CHAT_COLOUR .. "Allows you to right-click to open MonkeyBuddy.\n"
 MONKEYQUEST_HELP_DISALLOWRIGHTCLICK_MSG	= MONKEYQUEST_INFO_COLOUR .. "Slash Command: /mquest disallowrightclick\n" ..
 										  MONKEYQUEST_CHAT_COLOUR .. "Disallows you from right-clicking to open MonkeyBuddy.\n"
-MONKEYQUEST_HELP_HIDETITLEBUTTONS_MSG	= MONKEYQUEST_INFO_COLOUR .. "Slash Command: /mquest hidetitlebuttons\n" ..
-										  MONKEYQUEST_CHAT_COLOUR .. "Hides the title buttons.\n"
-MONKEYQUEST_HELP_SHOWTITLEBUTTONS_MSG	= MONKEYQUEST_INFO_COLOUR .. "Slash Command: /mquest showtitlebuttons\n" ..
-										  MONKEYQUEST_CHAT_COLOUR .. "Shows the title buttons.\n"
 MONKEYQUEST_HELP_ALLOWWORKCOMPLETE_MSG	= MONKEYQUEST_INFO_COLOUR .. "Slash Command: /mquest allowworkcomplete\n" ..
 										  MONKEYQUEST_CHAT_COLOUR .. "Enables >work complete< sound.\n"
 MONKEYQUEST_HELP_DISALLOWWORKCOMPLETE_MSG	= MONKEYQUEST_INFO_COLOUR .. "Slash Command: /mquest disallowworkcomplete\n" ..
 											  MONKEYQUEST_CHAT_COLOUR .. "Disables >work complete< sound.\n"
 
 -- tooltip strings
-MONKEYQUEST_TOOLTIP_QUESTITEM			= "Quest Item"					-- as it appears in the tooltip of unique quest items
 MONKEYQUEST_TOOLTIP_QUEST				= "Quest"
 MONKEYQUEST_TOOLTIP_SLAIN				= "slain"						-- as it appears in the objective text
 
@@ -113,18 +108,11 @@ MONKEYQUEST_PVP							= "PvP"
 -- noob tips
 MONKEYQUEST_NOOBTIP_HEADER				= "Noob Tip:"
 
-MONKEYQUEST_NOOBTIP_CLOSE				= "Click here to close the main frame. To get it back try:"
-MONKEYQUEST_NOOBTIP_MINIMIZE			= "Click here to minimize the main frame"
-MONKEYQUEST_NOOBTIP_RESTORE				= "Click here to restore the main frame"
-MONKEYQUEST_NOOBTIP_SHOWALLHIDDEN		= "Click here to show all hidden items"
-MONKEYQUEST_NOOBTIP_HIDEALLHIDDEN		= "Click here to hide all hidden items"
-MONKEYQUEST_NOOBTIP_HIDEBUTTON			= "Click here to hide this quest. Activate 'Show all hidden items' to see this quest again"
 MONKEYQUEST_NOOBTIP_TITLE				= "Right Click here to open MonkeyBuddy so you can configure " .. MONKEYQUEST_TITLE
 MONKEYQUEST_NOOBTIP_QUESTHEADER			= "Click here to hide/show all the quests under this zone. Activate 'Show all hidden items' to show zone headers you've hidden."
 
 -- bindings
 BINDING_NAME_MONKEYQUEST_CLOSE			= "Close/Open"
-BINDING_NAME_MONKEYQUEST_MINIMIZE		= "Minimize/Restore"
 BINDING_NAME_MONKEYQUEST_HIDDEN			= "Hide/Show all hidden items"
 BINDING_NAME_MONKEYQUEST_NOHEADERS		= "Toggle No Headers"
 
@@ -215,17 +203,12 @@ MONKEYQUEST_HELP_ALLOWRIGHTCLICK_MSG	= MONKEYQUEST_INFO_COLOUR .. "Utilisation :
 										  MONKEYQUEST_CHAT_COLOUR .. "Vous permet de faire un clic droit pour ouvrir MonkeyBuddy.\n"
 MONKEYQUEST_HELP_DISALLOWRIGHTCLICK_MSG	= MONKEYQUEST_INFO_COLOUR .. "Utilisation : /mquest disallowrightclick\n" ..
 										  MONKEYQUEST_CHAT_COLOUR .. "Désactive le clic droit pour ouvrir MonkeyBuddy.\n"
-MONKEYQUEST_HELP_HIDETITLEBUTTONS_MSG	= MONKEYQUEST_INFO_COLOUR .. "Utilisation : /mquest hidetitlebuttons\n" ..
-										  MONKEYQUEST_CHAT_COLOUR .. "Cacher les boutons de titre.\n"
-MONKEYQUEST_HELP_SHOWTITLEBUTTONS_MSG	= MONKEYQUEST_INFO_COLOUR .. "Utilisation : /mquest showtitlebuttons\n" ..
-										  MONKEYQUEST_CHAT_COLOUR .. "Montrer les boutons de titre.\n"
 --MONKEYQUEST_HELP_ALLOWWORKCOMPLETE_MSG	= MONKEYQUEST_INFO_COLOUR .. "Slash Command: /mquest allowworkcomplete\n" ..
 --										  MONKEYQUEST_CHAT_COLOUR .. "Enables >work complete< sound.\n"
 --MONKEYQUEST_HELP_DISALLOWWORKCOMPLETE_MSG	= MONKEYQUEST_INFO_COLOUR .. "Slash Command: /mquest disallowworkcomplete\n" ..
 --											  MONKEYQUEST_CHAT_COLOUR .. "Disables >work complete< sound.\n"
 
 -- tooltip strings
-MONKEYQUEST_TOOLTIP_QUESTITEM			= "Objet de quête"				-- as it appears in the tooltip of unique quest items
 MONKEYQUEST_TOOLTIP_QUEST				= "Quête"
 MONKEYQUEST_TOOLTIP_SLAIN				= "morts"						-- as it appears in the objective text
 
@@ -233,21 +216,8 @@ MONKEYQUEST_TOOLTIP_SLAIN				= "morts"						-- as it appears in the objective te
 MONKEYQUEST_DUNGEON						= "Donjon"
 MONKEYQUEST_PVP							= "JcJ"
 
--- noob tips
---MONKEYQUEST_NOOBTIP_HEADER				= "Noob Tip:"
-
---MONKEYQUEST_NOOBTIP_CLOSE				= "Click here to close the main frame. To get it back try:"
---MONKEYQUEST_NOOBTIP_MINIMIZE			= "Click here to minimize the main frame"
---MONKEYQUEST_NOOBTIP_RESTORE				= "Click here to restore the main frame"
---MONKEYQUEST_NOOBTIP_SHOWALLHIDDEN		= "Click here to show all hidden items"
---MONKEYQUEST_NOOBTIP_HIDEALLHIDDEN		= "Click here to hide all hidden items"
---MONKEYQUEST_NOOBTIP_HIDEBUTTON			= "Click here to hide this quest. Activate 'Show all hidden items' to see this quest again"
---MONKEYQUEST_NOOBTIP_TITLE				= "Right Click here to open MonkeyBuddy so you can configure " .. MONKEYQUEST_TITLE
---MONKEYQUEST_NOOBTIP_QUESTHEADER			= "Click here to hide/show all the quests under this zone. Activate 'Show all hidden items' to show zone headers you've hidden."
-
 -- bindings
 BINDING_NAME_MONKEYQUEST_CLOSE			= "Fermer/Open"
-BINDING_NAME_MONKEYQUEST_MINIMIZE		= "Réduire/Restore"
 BINDING_NAME_MONKEYQUEST_HIDDEN			= "Hide/Montrer les quêtes cachées"
 BINDING_NAME_MONKEYQUEST_NOHEADERS		= "Afficher/Masquer Headers"
 
@@ -272,7 +242,7 @@ MONKEYQUEST_HELP_MSG					= MONKEYQUEST_INFO_COLOUR .. "Verwendung: /mquest help 
 										  "growup, growdown, hidenumquests, shownumquests, lock, unlock, colourtitleon, " ..
 										  "colourtitleoff, hidecompletedquests, showcompletedquests, hidecompletedobjectives, " ..
 										  "showcompletedobjectives, fontheight, showtooltipobjectives, hidetootipobjectives, " ..
-										  "allowrightclick, disallowrightclick, hidetitlebuttons, showtitlebuttons, allowworkcomplete, disallowworkcomplete."
+										  "allowrightclick, disallowrightclick, allowworkcomplete, disallowworkcomplete."
 MONKEYQUEST_HELP_RESET_MSG				= MONKEYQUEST_INFO_COLOUR .. "Verwendung: /mquest reset\n" ..
 										  MONKEYQUEST_CHAT_COLOUR .. "Zur\195\188cksetzen der Einstellungen auf die Werkseinstellung\n"
 MONKEYQUEST_HELP_OPEN_MSG				= MONKEYQUEST_INFO_COLOUR .. "Verwendung: /mquest open\n" ..
@@ -338,17 +308,12 @@ MONKEYQUEST_HELP_ALLOWRIGHTCLICK_MSG 	= MONKEYQUEST_INFO_COLOUR .. "Verwendung: 
 										  MONKEYQUEST_CHAT_COLOUR .. "Erm\195\182glicht dir MonkeyBuddy mit Rechtsklick zu \195\182ffnen.\n"
 MONKEYQUEST_HELP_DISALLOWRIGHTCLICK_MSG	= MONKEYQUEST_INFO_COLOUR .. "Verwendung: /mquest disallowrightclick\n" ..
 										  MONKEYQUEST_CHAT_COLOUR .. "Erm\195\182glicht dir nicht MonkeyBuddy mit Rechtsklick zu \195\182ffnen.\n"
-MONKEYQUEST_HELP_HIDETITLEBUTTONS_MSG 	= MONKEYQUEST_INFO_COLOUR .. "Verwendung: /mquest hidetitlebuttons\n" ..
-										  MONKEYQUEST_CHAT_COLOUR .. "Versteckt die Titel-Buttons.\n"
-MONKEYQUEST_HELP_SHOWTITLEBUTTONS_MSG 	= MONKEYQUEST_INFO_COLOUR .. "Verwendung: /mquest showtitlebuttons\n" ..
-										  MONKEYQUEST_CHAT_COLOUR .. "Zeigt die Titel-Buttons.\n"
 MONKEYQUEST_HELP_ALLOWWORKCOMPLETE_MSG	= MONKEYQUEST_INFO_COLOUR .. "Verwendung: /mquest allowworkcomplete\n" ..
 										  MONKEYQUEST_CHAT_COLOUR .. "Aktiviert >Arbeit erledigt< Sound.\n"
 MONKEYQUEST_HELP_DISALLOWWORKCOMPLETE_MSG	= MONKEYQUEST_INFO_COLOUR .. "Verwendung: /mquest disallowworkcomplete\n" ..
 											  MONKEYQUEST_CHAT_COLOUR .. "Deaktiviert >Arbeit erledigt< Sound.\n"
 
 -- tooltip strings
-MONKEYQUEST_TOOLTIP_QUESTITEM			= "Questgegenstand"				-- as it appears in the tooltip of unique quest items
 MONKEYQUEST_TOOLTIP_QUEST				= "Quest"
 MONKEYQUEST_TOOLTIP_SLAIN				= "get\195\182tet"				-- as it appears in the objective text
 
@@ -360,17 +325,11 @@ MONKEYQUEST_PVP							= "PvP"
 MONKEYQUEST_NOOBTIP_HEADER				= "Anf\195\164nger Info:"
 
 MONKEYQUEST_NOOBTIP_CLOSE				= "Klicke hier um das Hauptfenster zu schlie\195\159en. R\195\188ckg\195\164ngig durch:"
-MONKEYQUEST_NOOBTIP_MINIMIZE			= "Klicke hier um das Hauptfenster zu minimieren"
-MONKEYQUEST_NOOBTIP_RESTORE				= "Klicke hier um das Hauptfenster wiederherzustellen"
-MONKEYQUEST_NOOBTIP_SHOWALLHIDDEN		= "Klicke hier um ausgeblendete Elemente anzuzeigen"
-MONKEYQUEST_NOOBTIP_HIDEALLHIDDEN		= "Klicke hier um ausgeblendete Elemente zu verbergen"
-MONKEYQUEST_NOOBTIP_HIDEBUTTON			= "Klicke hier um den Quest auszublenden. Aktiviere 'Zeige ausgeblendete Elemente' um den Quest wieder einzublenden"
 MONKEYQUEST_NOOBTIP_TITLE				= "Rechtsklick erm\195\182glicht es dir MonkeyBuddy zu \195\182ffnen und so " .. MONKEYQUEST_TITLE .. " zu konfigurieren"
 MONKEYQUEST_NOOBTIP_QUESTHEADER			= "Klicke hier um alle Quests dieser Zone ein/auszublenden. Aktiviere 'Zeige ausgeblendete Elemente' um ausgeblendete Questzonen wieder einzublenden."
 
 -- bindings
 BINDING_NAME_MONKEYQUEST_CLOSE			= "Schlie\195\159en/\195\150ffnen"
-BINDING_NAME_MONKEYQUEST_MINIMIZE		= "Minimieren/Wiederherstellen"
 BINDING_NAME_MONKEYQUEST_HIDDEN			= "Ausgeblentete Elemente ein/ausblenden"
 BINDING_NAME_MONKEYQUEST_NOHEADERS		= "Verberge Questzonen"
 
@@ -387,7 +346,7 @@ MONKEYQUEST_HELP_MSG					= MONKEYQUEST_INFO_COLOUR .. "Comando: /mquest help <co
 										  "growup, growdown, hidenumquests, shownumquests, lock, unlock, colourtitleon, " ..
 										  "colourtitleoff, hidecompletedquests, showcompletedquests, hidecompletedobjectives, " ..
 										  "showcompletedobjectives, fontheight, showtooltipobjectives, hidetootipobjectives, " ..
-										  "allowrightclick, disallowrightclick, hidetitlebuttons, showtitlebuttons."
+										  "allowrightclick, disallowrightclick."
 MONKEYQUEST_HELP_RESET_MSG				= MONKEYQUEST_INFO_COLOUR .. "Slash Command: /mquest reset\n" ..
 										  MONKEYQUEST_CHAT_COLOUR .. "Displays the reset config variables dialog.\n"
 MONKEYQUEST_HELP_OPEN_MSG				= MONKEYQUEST_INFO_COLOUR .. "Slash Command: /mquest open\n" ..
@@ -453,13 +412,8 @@ MONKEYQUEST_HELP_ALLOWRIGHTCLICK_MSG	= MONKEYQUEST_INFO_COLOUR .. "Slash Command
 										  MONKEYQUEST_CHAT_COLOUR .. "Allows you to right-click to open MonkeyBuddy.\n"
 MONKEYQUEST_HELP_DISALLOWRIGHTCLICK_MSG	= MONKEYQUEST_INFO_COLOUR .. "Slash Command: /mquest disallowrightclick\n" ..
 										  MONKEYQUEST_CHAT_COLOUR .. "Disallows you from right-clicking to open MonkeyBuddy.\n"
-MONKEYQUEST_HELP_HIDETITLEBUTTONS_MSG	= MONKEYQUEST_INFO_COLOUR .. "Slash Command: /mquest hidetitlebuttons\n" ..
-										  MONKEYQUEST_CHAT_COLOUR .. "Hides the title buttons.\n"
-MONKEYQUEST_HELP_SHOWTITLEBUTTONS_MSG	= MONKEYQUEST_INFO_COLOUR .. "Slash Command: /mquest showtitlebuttons\n" ..
-										  MONKEYQUEST_CHAT_COLOUR .. "Shows the title buttons.\n"
 
 -- tooltip strings
-MONKEYQUEST_TOOLTIP_QUESTITEM			= "Objeto de Quest"				-- as it appears in the tooltip of unique quest items
 MONKEYQUEST_TOOLTIP_QUEST				= "Quest"
 MONKEYQUEST_TOOLTIP_SLAIN				= "slain"						-- as it appears in the objective text
 
@@ -471,17 +425,11 @@ MONKEYQUEST_PVP							= "PvP"
 MONKEYQUEST_NOOBTIP_HEADER				= "Noob Tip:"
 
 MONKEYQUEST_NOOBTIP_CLOSE				= "Pulsa aqui para cerrar esta ventana. Podras volver:"
-MONKEYQUEST_NOOBTIP_MINIMIZE			= "Pulsa aqui para miminizar esta ventana"
-MONKEYQUEST_NOOBTIP_RESTORE				= "Pulsa aqui para restaurar esta ventana"
-MONKEYQUEST_NOOBTIP_SHOWALLHIDDEN		= "Pulsa aqui para ver todos los objetos ocultos"
-MONKEYQUEST_NOOBTIP_HIDEALLHIDDEN		= "Pulsa aqui para ocultar todos los objetos escondidos"
-MONKEYQUEST_NOOBTIP_HIDEBUTTON			= "Pulsa aqui para ocultar esta quest. Activalo en 'Show all hidden items' para mirar todas las quest"
 MONKEYQUEST_NOOBTIP_TITLE				= "Click derecho para abrir MonkeyBuddy y poder configurarlo " .. MONKEYQUEST_TITLE
 MONKEYQUEST_NOOBTIP_QUESTHEADER			= "Pulsa aqui para ocultar/mostrar todas las quest en esta zona. Activa 'Show all hidden items' para mostrar las de las zonas en que no estas."
 
 -- bindings
 BINDING_NAME_MONKEYQUEST_CLOSE			= "Cerrar/Abrir"
-BINDING_NAME_MONKEYQUEST_MINIMIZE		= "Minimizar/Restaurar"
 BINDING_NAME_MONKEYQUEST_HIDDEN			= "Ocultar/Mostrar todos los objetos ocultos"
 BINDING_NAME_MONKEYQUEST_NOHEADERS		= "Toggle No Headers"
 

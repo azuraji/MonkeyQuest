@@ -34,27 +34,6 @@
     </Scripts>
   </CheckButton>
 
-  <CheckButton name="MonkeyQuestDailiesCheckButtonTemplate" inherits="UICheckButtonTemplate" virtual="true">
-    <Size>
-      <AbsDimension x="22" y="22"/>
-    </Size>
-    <Layers>
-      <Layer level="ARTWORK">
-        <FontString name="$parentText" inherits="GameFontNormalSmall" text="">
-          <Anchors>
-            <Anchor point="LEFT" relativePoint="RIGHT"/>
-          </Anchors>
-        </FontString>
-      </Layer>
-    </Layers>
-    <Scripts>
-      <OnClick>
-        MonkeyQuestDailiesCheckButton_OnClick(self, button, down);
-      </OnClick>
-    </Scripts>
-  </CheckButton>
-
-
   <Button name="MonkeyBuddyQuestColourButtonTemplate" virtual="true">
     <Size>
       <AbsDimension x="16" y="16"/>
@@ -132,17 +111,6 @@
     <Anchors>
       <Anchor point="CENTER"/>
     </Anchors>
-    <!-- <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
-      <BackgroundInsets>
-        <AbsInset left="11" right="12" top="12" bottom="11"/>
-      </BackgroundInsets>
-      <TileSize>
-        <AbsValue val="32"/>
-      </TileSize>
-      <EdgeSize>
-        <AbsValue val="32"/>
-      </EdgeSize>
-    </Backdrop> -->
     <Layers>
       <Layer level="ARTWORK">
         <Texture name="MonkeyBuddyFrame_TitleTexture" file="Interface\DialogFrame\UI-DialogBox-Header">
@@ -180,18 +148,6 @@
             </Offset>
           </Anchor>
         </Anchors>
-        <!-- <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
-          <EdgeSize>
-            <AbsValue val="16"/>
-          </EdgeSize>
-          <TileSize>
-            <AbsValue val="16"/>
-          </TileSize>
-          <BackgroundInsets>
-            <AbsInset left="5" right="5" top="5" bottom="5"/>
-          </BackgroundInsets>
-        </Backdrop> -->
-
 
         <Layers>
           <Layer level="BACKGROUND">
@@ -205,13 +161,6 @@
             </Texture>
           </Layer>
         </Layers>
-        <!--
-        <Scripts>
-          <OnClick>
-            MonkeyBuddyQuestTab_OnClick();
-          </OnClick>
-        </Scripts>
-        -->
         <ButtonText inherits="GameFontHighlightSmall"/>
         <HighlightTexture inherits="UIPanelButtonHighlightTexture"/>
       </Button>
@@ -227,23 +176,12 @@
             </Offset>
           </Anchor>
         </Anchors>
-        <!-- <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
-          <EdgeSize>
-            <AbsValue val="16"/>
-          </EdgeSize>
-          <TileSize>
-            <AbsValue val="16"/>
-          </TileSize>
-          <BackgroundInsets>
-            <AbsInset left="5" right="5" top="5" bottom="5"/>
-          </BackgroundInsets>
-        </Backdrop>  -->
         <Frames>
           <CheckButton name="MonkeyBuddyQuestCheck1" inherits="MonkeyBuddyCheckButtonTemplate">
             <Anchors>
               <Anchor point="TOPLEFT">
                 <Offset>
-                  <AbsDimension x="16" y="-12"/>
+                  <AbsDimension x="16" y="-32"/>
                 </Offset>
               </Anchor>
             </Anchors>
@@ -348,16 +286,6 @@
               <Anchor point="TOPLEFT" relativeTo="MonkeyBuddyQuestCheck20" relativePoint="BOTTOMLEFT" />
             </Anchors>
           </CheckButton>
-          <CheckButton name="MonkeyBuddyQuestCheck22" inherits="MonkeyBuddyCheckButtonTemplate">
-            <Anchors>
-              <Anchor point="TOPLEFT" relativeTo="MonkeyBuddyQuestCheck21" relativePoint="BOTTOMLEFT" />
-            </Anchors>
-          </CheckButton>
-          <CheckButton name="MonkeyBuddyQuestCheck23" inherits="MonkeyBuddyCheckButtonTemplate">
-            <Anchors>
-              <Anchor point="TOPLEFT" relativeTo="MonkeyBuddyQuestCheck22" relativePoint="BOTTOMLEFT" />
-            </Anchors>
-          </CheckButton>
 
           <Button name="MonkeyBuddyQuestColour1" inherits="MonkeyBuddyQuestColourButtonTemplate">
             <Anchors>
@@ -408,14 +336,9 @@
               <Anchor point="TOPLEFT" relativeTo="MonkeyBuddyQuestColour8" relativePoint="BOTTOMLEFT" />
             </Anchors>
           </Button>
-          <Button name="MonkeyBuddyQuestColour10" inherits="MonkeyBuddyQuestColourButtonTemplate">
-            <Anchors>
-              <Anchor point="TOPLEFT" relativeTo="MonkeyBuddyQuestColour9" relativePoint="BOTTOMLEFT" />
-            </Anchors>
-          </Button>
           <Slider name="MonkeyBuddyQuestSlider1" inherits="MonkeyBuddySliderTemplate">
             <Anchors>
-              <Anchor point="TOPLEFT" relativeTo="MonkeyBuddyQuestColour10" relativePoint="BOTTOMLEFT">
+              <Anchor point="TOPLEFT" relativeTo="MonkeyBuddyQuestColour9" relativePoint="BOTTOMLEFT">
                 <Offset>
                   <AbsDimension x="0" y="-20" />
                 </Offset>
@@ -495,17 +418,6 @@
             </Offset>
           </Anchor>
         </Anchors>
-        <!-- <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
-          <EdgeSize>
-            <AbsValue val="16"/>
-          </EdgeSize>
-          <TileSize>
-            <AbsValue val="16"/>
-          </TileSize>
-          <BackgroundInsets>
-            <AbsInset left="5" right="5" top="5" bottom="5"/>
-          </BackgroundInsets>
-        </Backdrop>  -->
         <Frames>
           <CheckButton name="MonkeyBuddySpeedCheck1" inherits="MonkeyBuddyCheckButtonTemplate">
             <Anchors>
@@ -592,17 +504,6 @@
             </Offset>
           </Anchor>
         </Anchors>
-        <!-- <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
-          <EdgeSize>
-            <AbsValue val="16"/>
-          </EdgeSize>
-          <TileSize>
-            <AbsValue val="16"/>
-          </TileSize>
-          <BackgroundInsets>
-            <AbsInset left="5" right="5" top="5" bottom="5"/>
-          </BackgroundInsets>
-        </Backdrop>  -->
         <Frames>
           <CheckButton name="MonkeyBuddyClockCheck1" inherits="MonkeyBuddyCheckButtonTemplate">
             <Anchors>
@@ -735,11 +636,9 @@
       <OnEvent>
         MonkeyBuddy_OnEvent(self, event, ...);
       </OnEvent>
-      <OnShow>
-        <!--
+      <!-- <OnShow>
         PlaySound("igMainMenuOption");
-      -->
-      </OnShow>
+      </OnShow> -->
     </Scripts>
   </Frame>
 </Ui>
