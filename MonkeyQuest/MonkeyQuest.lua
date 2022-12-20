@@ -421,7 +421,7 @@ function MonkeyQuest_Refresh()
 							_G["MonkeyQuestButton" .. iButtonId].m_iQuestIndex = i;
 							_G["MonkeyQuestButton" .. iButtonId].id = iButtonId;
 							
-						_G["MonkeyQuestButton" .. iButtonId].m_strQuestLogTitleText = questInfo.title;
+							_G["MonkeyQuestButton" .. iButtonId].m_strQuestLogTitleText = questInfo.title;
 
 							iButtonId = iButtonId + 1;
 			
@@ -439,12 +439,11 @@ function MonkeyQuest_Refresh()
 								or  MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bShowHidden)
 					and (MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bHideHiddenQuests == false or questInfo.isHidden == false)) then
 					
-					local color = GetQuestDifficultyColor(questInfo.level);
 					local strQuestLink = GetQuestLink(questInfo.questID);
-					local hexColor = strQuestLink and select(3, strfind(strQuestLink, "|cff(.+)|H")) or format("%02X%02X%02X", color.r * 255, color.g * 255, color.b * 255);
+					local hexColor = select(3, strfind(strQuestLink, "|cff(.+)|H"));
 
 					-- adjust bright yellow to golden yellow
-					if (color.font == "QuestDifficulty_Difficult") then
+					if (hexColor == "ffff00") then
 						hexColor = "ffd000"
 					end
 
