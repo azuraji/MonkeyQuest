@@ -547,11 +547,7 @@ function MonkeyQuest_Refresh()
 
 							if (strLeaderBoardText) then
 								if (not iFinished) then
-									if (MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bColourSubObjectivesByProgress == true) then
-										strMonkeyQuestBody = strMonkeyQuestBody .. "    " .. MonkeyQuest_GetLeaderboardColorStr(strLeaderBoardText) .. strLeaderBoardText .. "\n";
-									else
-										strMonkeyQuestBody = strMonkeyQuestBody .. "    " .. MonkeyQuest_GetLeaderboardColorStr(strLeaderBoardText) .. strLeaderBoardText .. "\n";
-									end
+									strMonkeyQuestBody = strMonkeyQuestBody .. "    " .. MonkeyQuest_GetLeaderboardColorStr(strLeaderBoardText) .. strLeaderBoardText .. "\n";
 								elseif (MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bHideCompletedObjectives == false
 									or MonkeyQuestConfig[MonkeyQuest.m_strPlayer].m_bShowHidden) then
 									strMonkeyQuestBody = strMonkeyQuestBody .. "    " .. 
@@ -579,11 +575,11 @@ function MonkeyQuest_Refresh()
 											MonkeyQuestObjectiveTable[currentObjectiveName] = {};
 										end
 
-										if (isComplete and (MonkeyQuestObjectiveTable[currentObjectiveName].complete == nil or MonkeyQuestObjectiveTable[currentObjectiveName].complete == false)) then
+										if (isComplete and objectiveComplete and MonkeyQuestObjectiveTable[currentObjectiveName] and MonkeyQuestObjectiveTable[currentObjectiveName].complete == nil) then
 											PlaySoundFile(569169) -- sound/spells/valentines_lookingforloveheart.ogg
-										end
 
-										MonkeyQuestObjectiveTable[currentObjectiveName].complete = objectiveComplete;
+											MonkeyQuestObjectiveTable[currentObjectiveName].complete = objectiveComplete;
+										end
 									end
 								elseif (objectiveType == "event") then
 									if (objectiveDesc ~= nil) then
@@ -594,12 +590,12 @@ function MonkeyQuest_Refresh()
 											MonkeyQuestObjectiveTable[currentObjectiveDesc] = {};
 										end
 
-										if (objectiveComplete == true and MonkeyQuestObjectiveTable[currentObjectiveDesc].complete == nil) then
+										if (isComplete and objectiveComplete and MonkeyQuestObjectiveTable[currentObjectiveName] and MonkeyQuestObjectiveTable[currentObjectiveName].complete == nil) then
 											-- PlaySoundFile("sound\\spells\\valentines_lookingforloveheart.ogg")
 											PlaySoundFile(569169)
-										end
 
-										MonkeyQuestObjectiveTable[currentObjectiveDesc].complete = objectiveComplete;
+											MonkeyQuestObjectiveTable[currentObjectiveDesc].complete = objectiveComplete;
+										end
 									end
 								end
 							end
